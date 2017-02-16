@@ -1,5 +1,5 @@
 /*!
- * Lostorage library v1.0.2
+ * Lostorage library v1.0.3
  * https://github.com/Nogard7491/lostorage
  */
 (function (factory) {
@@ -62,7 +62,15 @@
      */
     Lostorage.prototype.get = function (key) {
 
-        return localStorage.getItem(key);
+        var result = localStorage.getItem(key);
+
+        try {
+            result = JSON.parse(result);
+        } catch (ex) {
+            return result;
+        }
+
+        return result;
     };
 
     /**
@@ -73,7 +81,7 @@
      */
     Lostorage.prototype.set = function (key, value) {
 
-        localStorage.setItem(key, value);
+        localStorage.setItem(key, JSON.stringify(value));
     };
 
     /**
