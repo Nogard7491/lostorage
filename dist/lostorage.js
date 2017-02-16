@@ -1,5 +1,5 @@
 /*!
- * Lostorage library v1.0.0
+ * Lostorage library v1.0.2
  * https://github.com/Nogard7491/lostorage
  */
 (function (factory) {
