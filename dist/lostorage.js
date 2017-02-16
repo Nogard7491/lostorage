@@ -1,5 +1,5 @@
 /*!
- * Lostorage library v1.0.3
+ * Lostorage library v1.0.4
  * https://github.com/Nogard7491/lostorage
  */
 (function (factory) {
@@ -25,30 +25,19 @@
 
     /**
      * Проверяет работает ли локальное хранилище.
+     *
+     * @return {boolean} флаг сущестования локального хранилища
      */
     Lostorage.prototype.checkEnabled = function () {
 
-        var localStorageEnabled;
-
-        try {
-            if (this.get("lostoragetest") == "1") {
-                localStorageEnabled = true;
-            } else {
-                this.set("lostoragetest", "1");
-                localStorageEnabled = this.get("lostoragetest") == "1";
-                this.delete("lostoragetest");
-            }
-        } catch (ex) {
-            return false;
-        }
-
-        return localStorageEnabled;
+        return (window.localStorage) ? true : false;
     };
 
     /**
-     * Проверяет существует ли переменная в локальном хранилище.
+     * Проверяет существует ли элемент в локальном хранилище.
      *
      * @param key ключ
+     * @return {boolean} флаг сущестования переменной
      */
     Lostorage.prototype.exists = function (key) {
 
@@ -56,9 +45,21 @@
     };
 
     /**
-     * Получает значение переменной из локального хранилища.
+     * Получает ключ элемента по его порядковому номеру.
+     *
+     * @param index порядковый номер
+     * @return {string} ключ переменной
+     */
+    Lostorage.prototype.getKey = function (index) {
+
+        return localStorage.key(index);
+    };
+
+    /**
+     * Получает значение элемента локального хранилища.
      *
      * @param key ключ
+     * @return {mixed} значение переменной
      */
     Lostorage.prototype.get = function (key) {
 
@@ -74,7 +75,7 @@
     };
 
     /**
-     * Создаёт переменную в локальном хранилище.
+     * Создаёт элемент в локальном хранилище.
      *
      * @param key ключ
      * @param value значение
@@ -85,7 +86,7 @@
     };
 
     /**
-     * Удаляет переменную из локального хранилища.
+     * Удаляет элемент из локального хранилища.
      *
      * @param key ключ
      */
@@ -97,9 +98,17 @@
     /**
      * Очищает локальное хранилище.
      */
-    Location.prototype.deleteAll = function () {
+    Lostorage.prototype.deleteAll = function () {
 
         localStorage.clear();
+    };
+
+    /**
+     * Получает количество элементов локального хранилища.
+     */
+    Lostorage.prototype.getLength = function () {
+
+        return localStorage.length;
     };
 
     return new Lostorage();
