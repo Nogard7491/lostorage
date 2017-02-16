@@ -1,5 +1,5 @@
 /*!
- * Lostorage library v1.0.4
+ * Lostorage library v1.0.5
  * https://github.com/Nogard7491/lostorage
  */
 (function (factory) {
@@ -105,6 +105,8 @@
 
     /**
      * Получает количество элементов локального хранилища.
+     *
+     * @return {number} количество элементов
      */
     Lostorage.prototype.getLength = function () {
 
