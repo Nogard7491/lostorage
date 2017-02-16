@@ -1,5 +1,5 @@
 /*!
- * Lostorage library v1.0.5
+ * Lostorage library v1.0.6
  * https://github.com/Nogard7491/lostorage
  */
 (function (factory) {
@@ -30,7 +30,11 @@
      */
     Lostorage.prototype.checkEnabled = function () {
 
-        return (window.localStorage) ? true : false;
+        try {
+            return "localStorage" in window && window["localStorage"] !== null;
+        } catch (ex) {
+            return false;
+        }
     };
 
     /**
