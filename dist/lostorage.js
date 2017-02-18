@@ -1,5 +1,5 @@
 /*!
- * Lostorage library v1.0.6
+ * Lostorage library v1.0.7
  * https://github.com/Nogard7491/lostorage
  */
 (function (factory) {
@@ -43,7 +43,7 @@
      * @param key ключ
      * @return {boolean} флаг сущестования переменной
      */
-    Lostorage.prototype.exists = function (key) {
+    Lostorage.prototype.has = function (key) {
 
         return (this.get(key) === null) ? false : true;
     };

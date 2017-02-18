@@ -49,7 +49,10 @@ Local storage (локальное хранилище) — база данных 
 
 ```javascript
     // проверка на существование элемента в локальном хранилище
-    lostorage.exists("variable_key");
+    lostorage.has("variable_key");
+
+    // устаревший метод
+    // lostorage.exists("variable_key");
 ```
 
 ```javascript
